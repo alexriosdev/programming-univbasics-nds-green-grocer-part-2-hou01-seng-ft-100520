@@ -25,8 +25,13 @@ def apply_clearance(cart)
   #
   # REMEMBER: This method **should** update cart
   
-  cart.map { |item| item[:clearance] ? (item[:price] *= 0.8).round(2) : item }
-  
+  cart.map do |item| 
+    if item[:clearance]
+      result = item[:price] *= 0.8
+      result.round(2)
+    end
+    item
+  end
   
 end
 
